@@ -1,16 +1,16 @@
 ﻿using BackEndOTP.entity;
-using Microsoft.AspNetCore.Mvc;
-using System;
+using BackEndOTP.model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BackEndOTP.Interface
 {
     public interface IUsuarioService
     {
-        IEnumerable<Usuario>list();
+       IEnumerable<Usuario> list();
        void create(Usuario usuario);
+       void update(int id, UsuarioModel usuario);
+       void delete(int id);
+        Usuario getid(int Id);
     }
 
 }

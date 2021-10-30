@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEndOTP.entity
 {
-    public class Usuario 
+    public class Usuario
     {
         [Key]
         public int Id { get; set; }

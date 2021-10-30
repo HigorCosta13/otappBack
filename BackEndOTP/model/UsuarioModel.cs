@@ -20,5 +20,6 @@ namespace BackEndOTP.model
         public string email { get; set; }
         [Required(ErrorMessage = "campo obrigatorio")]
         public string senha { get; set; }
+        public string imagem { get; set; }
     }
 }

@@ -28,10 +28,32 @@ namespace BackEndOTP.Controllers
         }
         [HttpPost]
         [Route("Cadastro")]
-        public ActionResult<Usuario> cadastro(Usuario usuario)
+        public ActionResult<UsuarioModel> cadastro([FromBody] Usuario usuario)
         {
             _usuario.create(usuario);
             return Ok();
+        }
+        [HttpPut]
+        [Route("Update")]
+       public ActionResult<UsuarioModel> update(int id, [FromBody] UsuarioModel usuario)
+        {
+
+            _usuario.update(id,usuario);
+            return Ok();
+        }
+        [HttpDelete]
+        [Route("Delete")]
+        public ActionResult<UsuarioModel> delete(int id)
+        {
+            _usuario.delete(id);
+            return Ok();
+        }
+        [HttpGet]
+        [Route("getid")]
+        public Usuario getid(int id)
+        {
+           return _usuario.getid(id);
+
         }
 
     }
