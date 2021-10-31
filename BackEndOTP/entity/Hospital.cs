@@ -11,10 +11,6 @@ namespace BackEndOTP.entity
         [Key]
         public int id { get; set; }
         public string hospital { get; set; }
-        public DateTime dataconsulta { get; set; }
-        public DateTime horaConslta { get; set; }
-
-
 
     }
 }

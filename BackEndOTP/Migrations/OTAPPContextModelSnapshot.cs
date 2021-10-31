@@ -26,6 +26,9 @@ namespace BackEndOTP.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("data")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("hospitalID")
                         .HasColumnType("int");
 
@@ -47,12 +50,6 @@ namespace BackEndOTP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("dataconsulta")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("horaConslta")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("hospital")
                         .HasColumnType("nvarchar(max)");

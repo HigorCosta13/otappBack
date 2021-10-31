@@ -9,7 +9,7 @@ namespace BackEndOTP.model
     {
         public int usuarioID { get; set; }
         public int hospitalID { get; set; }
-        public int  hospital { get; set; }
-        public int  Usuario { get; set; }
+        public DateTime data { get; set; }
+
     }
 }

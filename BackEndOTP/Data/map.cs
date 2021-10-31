@@ -14,6 +14,8 @@ namespace BackEndOTP.Data
         {
             CreateMap<Usuario, UsuarioModel>();
             CreateMap<UsuarioModel, Usuario>();
+            CreateMap<Consulta, ConsultaModel>();
+            CreateMap<ConsultaModel,Consulta>();
         }
     }
 }

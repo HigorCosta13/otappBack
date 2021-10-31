@@ -14,9 +14,11 @@ namespace BackEndOTP.entity
         public int id { get; set; }
         public int usuarioID { get; set; }
         public int hospitalID { get; set; }
+        public DateTime data { get; set; }
         [ForeignKey("hospitalID")]
         public virtual Hospital hospital { get; set; }
         [ForeignKey("usuarioID")]
         public virtual Usuario Usuario { get; set; }
+        
     }
 }

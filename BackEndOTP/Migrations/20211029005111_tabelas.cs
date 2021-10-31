@@ -14,8 +14,6 @@ namespace BackEndOTP.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     hospital = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    dataconsulta = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    horaConslta = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
