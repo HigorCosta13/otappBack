@@ -50,7 +50,7 @@ namespace BackEndOTP.Controllers
         }
         [HttpGet]
         [Route("getconsultacliente")]
-        public IEnumerable<Consulta> GetConsultaCliente(int id)
+        public IEnumerable<ConsultaModel> GetConsultaCliente(int id)
         {
             return _consulta.GetConsulta(id);
         }

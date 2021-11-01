@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackEndOTP.Migrations
 {
-    public partial class tabelas : Migration
+    public partial class teste : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace BackEndOTP.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    hospital = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    hospital = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,17 +46,22 @@ namespace BackEndOTP.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     usuarioID = table.Column<int>(type: "int", nullable: false),
-                    hospitalID = table.Column<int>(type: "int", nullable: false)
+                    hospitalID = table.Column<int>(type: "int", nullable: false),
+                    hopsital = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    especialidade = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    hora = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    hopsitalname = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_consultas", x => x.id);
                     table.ForeignKey(
-                        name: "FK_consultas_hospitals_hospitalID",
-                        column: x => x.hospitalID,
+                        name: "FK_consultas_hospitals_hopsitalname",
+                        column: x => x.hopsitalname,
                         principalTable: "hospitals",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_consultas_usuarios_usuarioID",
                         column: x => x.usuarioID,
@@ -66,9 +71,9 @@ namespace BackEndOTP.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_consultas_hospitalID",
+                name: "IX_consultas_hopsitalname",
                 table: "consultas",
-                column: "hospitalID");
+                column: "hopsitalname");
 
             migrationBuilder.CreateIndex(
                 name: "IX_consultas_usuarioID",

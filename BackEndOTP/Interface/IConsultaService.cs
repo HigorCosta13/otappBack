@@ -7,10 +7,10 @@ namespace BackEndOTP.Interface
     public interface IConsultaService
     {
         IEnumerable<Consulta> list();
-        void create(ConsultaModel usuario);
+        void create(ConsultaModel consulta);
         void update(int id, ConsultaModel usuario);
         void delete(int id);
         Consulta getid(int Id);
-        IEnumerable<Consulta> GetConsulta(int Id);
+        IEnumerable<ConsultaModel> GetConsulta(int Id);
     }
 }

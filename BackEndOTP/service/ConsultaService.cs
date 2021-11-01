@@ -22,7 +22,14 @@ namespace BackEndOTP.service
 
         public void create(ConsultaModel consulta)
         {
-            Consulta cosul = _mapper.Map<Consulta>(consulta);
+            Consulta cosul = new Consulta();
+            cosul.data = consulta.data;
+            cosul.especialidade = consulta.especialidade;
+            cosul.hopsital = consulta.hopsital;
+            cosul.hora = consulta.hora;
+            cosul.hospitalID = consulta.hospitalID;
+            cosul.usuarioID = consulta.usuarioID;
+            
             _oTAPPContext.consultas.Add(cosul);
             _oTAPPContext.SaveChanges();
         }
@@ -34,10 +41,18 @@ namespace BackEndOTP.service
             _oTAPPContext.SaveChanges();
         }
 
-        public IEnumerable<Consulta> GetConsulta(int Id)
+        public IEnumerable<ConsultaModel> GetConsulta(int Id)
         {
-            var list = _oTAPPContext.consultas.Where(c => c.usuarioID == Id).ToList();
-            return list;
+            return (from list in _oTAPPContext.consultas
+                    where list.usuarioID.Equals(Id)
+                    select new ConsultaModel {
+                        usuarioID = list.usuarioID,
+                        hospitalID = list.hospitalID,
+                        data = list.data,
+                        especialidade = list.especialidade,
+                        hopsital = list.hopsital,
+                        hora = list.hora
+                    }).ToList();
         }
 
         public Consulta getid(int Id)

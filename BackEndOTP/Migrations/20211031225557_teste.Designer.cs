@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndOTP.Migrations
 {
     [DbContext(typeof(OTAPPContext))]
-    [Migration("20211029005111_tabelas")]
-    partial class tabelas
+    [Migration("20211031225557_teste")]
+    partial class teste
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,21 @@ namespace BackEndOTP.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("especialidade")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("hopsital")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("hopsitalname")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("hora")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("hospitalID")
                         .HasColumnType("int");
 
@@ -36,7 +51,7 @@ namespace BackEndOTP.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("hospitalID");
+                    b.HasIndex("hopsitalname");
 
                     b.HasIndex("usuarioID");
 
@@ -49,12 +64,6 @@ namespace BackEndOTP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("dataconsulta")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("horaConslta")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("hospital")
                         .HasColumnType("nvarchar(max)");
@@ -99,21 +108,19 @@ namespace BackEndOTP.Migrations
 
             modelBuilder.Entity("BackEndOTP.entity.Consulta", b =>
                 {
-                    b.HasOne("BackEndOTP.entity.Hospital", "hospital")
+                    b.HasOne("BackEndOTP.entity.Hospital", "hospitalid")
                         .WithMany()
-                        .HasForeignKey("hospitalID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("hopsitalname");
 
-                    b.HasOne("BackEndOTP.entity.Usuario", "Usuario")
+                    b.HasOne("BackEndOTP.entity.Usuario", "Usuarioid")
                         .WithMany()
                         .HasForeignKey("usuarioID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("hospital");
+                    b.Navigation("hospitalid");
 
-                    b.Navigation("Usuario");
+                    b.Navigation("Usuarioid");
                 });
 #pragma warning restore 612, 618
         }
