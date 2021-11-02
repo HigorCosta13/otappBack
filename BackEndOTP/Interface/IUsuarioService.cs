@@ -7,7 +7,7 @@ namespace BackEndOTP.Interface
     public interface IUsuarioService
     {
        IEnumerable<Usuario> list();
-       void create(Usuario usuario);
+       void create(UsuarioModel usuario);
        void update(int id, UsuarioModel usuario);
        void delete(int id);
         Usuario getid(int Id);

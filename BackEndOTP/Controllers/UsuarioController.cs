@@ -25,7 +25,7 @@ namespace BackEndOTP.Controllers
         }
         [HttpPost]
         [Route("Cadastro")]
-        public ActionResult<UsuarioModel> cadastro([FromBody] Usuario usuario)
+        public ActionResult<UsuarioModel> cadastro([FromBody] UsuarioModel usuario)
         {
             _usuario.create(usuario);
             return Ok();
