@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BackEndOTP.model
 {
-    public class UsuarioModel : IdentityUser
+    public class UsuarioModel 
     {   [Required(ErrorMessage ="campo obrigatorio")]
         public string nome { get; set; }
         [Required(ErrorMessage = "campo obrigatorio")]

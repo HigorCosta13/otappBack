@@ -1,4 +1,5 @@
-﻿using BackEndOTP.Data;
+﻿using AutoMapper;
+using BackEndOTP.Data;
 using BackEndOTP.entity;
 using BackEndOTP.Interface;
 using BackEndOTP.model;
@@ -13,15 +14,21 @@ namespace BackEndOTP.service
     public class UsuarioService : IUsuarioService
     {
         private readonly OTAPPContext _oTAPPContext;
+        private readonly IMapper _mapper;
 
-        public UsuarioService(OTAPPContext oTAPPContext)
+        public UsuarioService(OTAPPContext oTAPPContext,
+            IMapper mapper)
         {
             _oTAPPContext = oTAPPContext;
+            _mapper = mapper;
         }
 
-        public void create(Usuario usuario)
+
+        public void create(UsuarioModel usuarioModel)
         {
-            _oTAPPContext.usuarios.Add(usuario);
+            var use = _mapper.Map<Usuario>(usuarioModel);
+
+            _oTAPPContext.usuarios.Add(use);
             _oTAPPContext.SaveChanges();
         }
 

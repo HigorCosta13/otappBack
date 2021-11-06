@@ -13,19 +13,19 @@ namespace BackEndOTP.service
     public class ConsultaService : IConsultaService
     {
         private readonly OTAPPContext _oTAPPContext;
-        private readonly IMapper _mapper;
-        public ConsultaService(OTAPPContext oTAPPContext, IMapper mapper)
+ 
+        public ConsultaService(OTAPPContext oTAPPContext)
         {
             _oTAPPContext = oTAPPContext;
-            _mapper = mapper;
         }
 
-        public void create(ConsultaModel consulta)
+        public void create(ConsultaCadastroModal consulta)
         {
+            var hospital = _oTAPPContext.hospitals.FirstOrDefault(h => h.id == consulta.hospitalID); 
             Consulta cosul = new Consulta();
             cosul.data = consulta.data;
             cosul.especialidade = consulta.especialidade;
-            cosul.hopsital = consulta.hopsital;
+            cosul.hopsital = hospital.hospital;
             cosul.hora = consulta.hora;
             cosul.hospitalID = consulta.hospitalID;
             cosul.usuarioID = consulta.usuarioID;
@@ -75,6 +75,7 @@ namespace BackEndOTP.service
             consulta.data = consultaModel.data;
             _oTAPPContext.consultas.Update(consulta);
             _oTAPPContext.SaveChanges();
+
         }
     }
 }

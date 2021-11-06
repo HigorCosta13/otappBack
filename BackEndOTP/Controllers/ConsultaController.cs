@@ -23,7 +23,7 @@ namespace BackEndOTP.Controllers
         }
         [HttpPost]
         [Route("cadastro")]
-        public ActionResult<ConsultaModel> cadastro([FromBody] ConsultaModel consulta)
+        public ActionResult<ConsultaCadastroModal> cadastro([FromBody] ConsultaCadastroModal consulta)
         {
             _consulta.create(consulta);
             return Ok();
