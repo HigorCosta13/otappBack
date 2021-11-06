@@ -36,7 +36,6 @@ C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\ne
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\AutoMapper.Extensions.ExpressionMapping.dll
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\net5.0\BackEndOTP.csproj.CopyComplete
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\Microsoft.Data.Sqlite.dll
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Sqlite.dll
