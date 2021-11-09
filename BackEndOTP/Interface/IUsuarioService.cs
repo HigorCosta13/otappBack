@@ -11,6 +11,7 @@ namespace BackEndOTP.Interface
        void update(int id, UsuarioModel usuario);
        void delete(int id);
         Usuario getid(int Id);
+        string hashsenha(string senha);
     }
 
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace BackEndOTP.service
@@ -27,7 +28,7 @@ namespace BackEndOTP.service
         public void create(UsuarioModel usuarioModel)
         {
             var use = _mapper.Map<Usuario>(usuarioModel);
-
+            use.senha = hashsenha(usuarioModel.senha);
             _oTAPPContext.usuarios.Add(use);
             _oTAPPContext.SaveChanges();
         }
@@ -43,6 +44,25 @@ namespace BackEndOTP.service
         {
             Usuario user = _oTAPPContext.usuarios.FirstOrDefault(u => u.Id == Id);
             return user;
+        }
+
+        public string hashsenha(string senha)
+        {
+            byte[] salt;
+            byte[] buffer2;
+            if (senha == null)
+            {
+                throw new ArgumentNullException("senha");
+            }
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(senha, 0x10, 0x3e8))
+            {
+                salt = bytes.Salt;
+                buffer2 = bytes.GetBytes(0x20);
+            }
+            byte[] dst = new byte[0x31];
+            Buffer.BlockCopy(salt, 0, dst, 1, 0x10);
+            Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
+            return Convert.ToBase64String(dst);
         }
 
         public IEnumerable<Usuario> list()

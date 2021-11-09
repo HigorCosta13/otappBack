@@ -61,3 +61,4 @@ C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\ne
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\runtimes\osx-x64\native\libsqlite3.dylib
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\runtimes\win7-x64\native\sqlite3.dll
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\bin\Debug\net5.0\runtimes\win7-x86\native\sqlite3.dll
+C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\net5.0\BackEndOTP.csproj.CopyComplete
