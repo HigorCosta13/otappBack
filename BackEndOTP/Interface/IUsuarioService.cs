@@ -10,8 +10,8 @@ namespace BackEndOTP.Interface
        void create(UsuarioModel usuarioModel);
        void update(int id, UsuarioModel usuario);
        void delete(int id);
-        Usuario getid(int Id);
-        string hashsenha(string senha);
+       Usuario getid(int Id);
+       AutenticacaoModel login(LoginModal loginModal);
     }
 
 }

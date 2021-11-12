@@ -3,9 +3,12 @@ using BackEndOTP.Data;
 using BackEndOTP.entity;
 using BackEndOTP.Interface;
 using BackEndOTP.model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BackEndOTP.service
@@ -19,8 +22,11 @@ namespace BackEndOTP.service
             _oTAPPContext = oTAPPContext;
         }
 
-        public void create(ConsultaCadastroModal consulta)
+        public void create(ConsultaCadastroModal consulta, string header)
         {
+            
+           
+
             var hospital = _oTAPPContext.hospitals.FirstOrDefault(h => h.id == consulta.hospitalID); 
             Consulta cosul = new Consulta();
             cosul.data = consulta.data;
@@ -28,7 +34,7 @@ namespace BackEndOTP.service
             cosul.hopsital = hospital.hospital;
             cosul.hora = consulta.hora;
             cosul.hospitalID = consulta.hospitalID;
-            cosul.usuarioID = consulta.usuarioID;
+            cosul.usuarioID = Convert.ToInt32(header);
             
             _oTAPPContext.consultas.Add(cosul);
             _oTAPPContext.SaveChanges();
@@ -43,6 +49,7 @@ namespace BackEndOTP.service
 
         public IEnumerable<ConsultaModel> GetConsulta(int Id)
         {
+   
             return (from list in _oTAPPContext.consultas
                     where list.usuarioID.Equals(Id)
                     select new ConsultaModel {
@@ -70,7 +77,7 @@ namespace BackEndOTP.service
         public void update(int id, ConsultaModel consultaModel)
         {
             var consulta = _oTAPPContext.consultas.FirstOrDefault(u => u.id == id);
-            consulta.usuarioID = consultaModel.usuarioID;
+            consulta.usuarioID = id;
             consulta.hospitalID = consultaModel.hospitalID;
             consulta.data = consultaModel.data;
             _oTAPPContext.consultas.Update(consulta);

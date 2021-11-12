@@ -1,19 +1,26 @@
-﻿using BackEndOTP.entity;
+﻿using BackEndOTP.Data;
+using BackEndOTP.entity;
 using BackEndOTP.Interface;
 using BackEndOTP.model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System;
 
 namespace BackEndOTP.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class ConsultaController : ControllerBase
     {
         private readonly IConsultaService _consulta;
-        public ConsultaController(IConsultaService consulta)
+        private readonly OTAPPContext _oTAPPContext;
+        public ConsultaController(IConsultaService consulta, OTAPPContext oTAPPContext)
         {
             _consulta = consulta;
+            _oTAPPContext = oTAPPContext;
         }
         [HttpGet]
         [Route("list")]
@@ -25,14 +32,17 @@ namespace BackEndOTP.Controllers
         [Route("cadastro")]
         public ActionResult<ConsultaCadastroModal> cadastro([FromBody] ConsultaCadastroModal consulta)
         {
-            _consulta.create(consulta);
+
+            string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _consulta.create(consulta, header);
             return Ok();
         }
         [HttpPut]
         [Route("Update")]
-        public ActionResult<ConsultaModel> update(int id, [FromBody] ConsultaModel consulta)
+        public ActionResult<ConsultaModel> update([FromBody] ConsultaModel consulta)
         {
-            _consulta.update(id,consulta);
+            string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _consulta.update(Convert.ToInt32(header), consulta);
             return Ok();
         }
         [HttpDelete]
@@ -50,10 +60,11 @@ namespace BackEndOTP.Controllers
         }
         [HttpGet]
         [Route("getconsultacliente")]
-        public IEnumerable<ConsultaModel> GetConsultaCliente(int id)
+        public IEnumerable<ConsultaModel> GetConsultaCliente()
         {
-            return _consulta.GetConsulta(id);
+            string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _consulta.GetConsulta(Convert.ToInt32(header));
         }
-            
-     }
+
+    }
 }
