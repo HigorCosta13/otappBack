@@ -80,3 +80,4 @@ C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\ne
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\net5.0\ref\BackEndOTP.dll
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\net5.0\BackEndOTP.pdb
 C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\net5.0\BackEndOTP.genruntimeconfig.cache
+C:\Users\jhona\OneDrive\Documentos\higor\Back\BackEndOTP\BackEndOTP\obj\Debug\net5.0\BackEndOTP.csproj.AssemblyReference.cache

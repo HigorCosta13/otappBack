@@ -48,6 +48,7 @@ namespace BackEndOTP.service
             return (from list in _oTAPPContext.consultas
                     where list.usuarioID.Equals(Id)
                     select new ConsultaModel {
+                        id = list.id,
                         UsuarioID = list.usuarioID,
                         hospitalID = list.hospitalID,
                         data = list.data,
