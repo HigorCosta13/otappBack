@@ -4,7 +4,6 @@ using BackEndOTP.Data;
 using BackEndOTP.entity;
 using BackEndOTP.Interface;
 using BackEndOTP.model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -45,6 +44,7 @@ namespace BackEndOTP.service
             use.senha = HashPassword(usuarioModel.senha);
             _oTAPPContext.usuarios.Add(use);
             _oTAPPContext.SaveChanges();
+ 
         }
 
         public void delete(int id)
@@ -164,21 +164,41 @@ namespace BackEndOTP.service
         }
     
 
-    public AutenticacaoModel login(LoginModal loginModal)
+            public AutenticacaoModel login(LoginModal loginModal)
+                {
+                    var usuario = _oTAPPContext.usuarios.FirstOrDefault(u => u.email == loginModal.email);
+                    if (usuario != null)
+                    {
+                        var result = VerifyHashedPassword(usuario.senha, loginModal.senha);
+                        if (result != false)
+                        {
+                            var token = GenerateToken(usuario);
+                            AutenticacaoModel autenticacaoModel = new AutenticacaoModel();
+                            autenticacaoModel.token = token;
+                            autenticacaoModel.email = loginModal.email;
+
+                            return autenticacaoModel;
+
+                        }
+                        return null;
+                    }
+                    return null;
+             }
+        public bool validaremail(UsuarioModel usuarioModel)
         {
-            var usuario = _oTAPPContext.usuarios.FirstOrDefault(u => u.email == loginModal.email);
-            var result = VerifyHashedPassword(usuario.senha, loginModal.senha);
-            if(result != false)
-            {
-                var token = GenerateToken(usuario);
-                AutenticacaoModel autenticacaoModel = new AutenticacaoModel();
-                autenticacaoModel.token = token;
-                autenticacaoModel.email = loginModal.email;
+            var user = _oTAPPContext.usuarios.FirstOrDefault(u => u.email == usuarioModel.email);
 
-                return autenticacaoModel;
+            if (user == null)
+                return true;
+            return false;
+        }
+        public bool validareCPF(UsuarioModel usuarioModel)
+        {
+            var user = _oTAPPContext.usuarios.FirstOrDefault(u => u.cpf == usuarioModel.cpf);
 
-            }
-            return null;
+            if (user == null)
+                return true;
+            return false;
         }
 
     }

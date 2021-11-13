@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackEndOTP.Migrations
 {
-    public partial class teste : Migration
+    public partial class OTAPP : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,7 @@ namespace BackEndOTP.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     nome = table.Column<string>(type: "TEXT", nullable: true),
                     sobrenome = table.Column<string>(type: "TEXT", nullable: true),
-                    cpf = table.Column<int>(type: "INTEGER", nullable: false),
+                    cpf = table.Column<string>(type: "TEXT", nullable: true),
                     dateDeNascimento = table.Column<DateTime>(type: "TEXT", nullable: false),
                     email = table.Column<string>(type: "TEXT", nullable: true),
                     senha = table.Column<string>(type: "TEXT", nullable: true),
@@ -79,6 +79,12 @@ namespace BackEndOTP.Migrations
                 name: "IX_consultas_usuarioID",
                 table: "consultas",
                 column: "usuarioID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_usuarios_email_cpf",
+                table: "usuarios",
+                columns: new[] { "email", "cpf" },
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -9,9 +9,9 @@ namespace BackEndOTP.Interface
     {
         IEnumerable<Consulta> list();
         void create(ConsultaCadastroModal consulta, string header);
-        void update(int id, ConsultaModel usuario);
+        void update(int id, ConsultaCadastroModal usuario);
         void delete(int id);
-        Consulta getid(int Id);
+        ConsultaModel getid(int Id);
         IEnumerable<ConsultaModel> GetConsulta(int Id);
     }
 }

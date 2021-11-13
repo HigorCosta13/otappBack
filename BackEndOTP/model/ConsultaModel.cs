@@ -7,7 +7,7 @@ namespace BackEndOTP.model
 {
     public class ConsultaModel
     {
-        public int usuarioID { get; set; }
+        public int UsuarioID { get; set; }
         public int hospitalID { get; set; }
         public string hopsital { get; set; }
         public string especialidade { get; set; }

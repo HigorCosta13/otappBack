@@ -12,6 +12,9 @@ namespace BackEndOTP.Interface
        void delete(int id);
        Usuario getid(int Id);
        AutenticacaoModel login(LoginModal loginModal);
+       bool validaremail(UsuarioModel usuarioModel);
+       bool validareCPF(UsuarioModel usuarioModel);
+
     }
 
 }

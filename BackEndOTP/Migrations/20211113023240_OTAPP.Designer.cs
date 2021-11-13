@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndOTP.Migrations
 {
     [DbContext(typeof(OTAPPContext))]
-    [Migration("20211106002126_teste")]
-    partial class teste
+    [Migration("20211113023240_OTAPP")]
+    partial class OTAPP
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,8 +74,8 @@ namespace BackEndOTP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("cpf")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("cpf")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("dateDeNascimento")
                         .HasColumnType("TEXT");
@@ -96,6 +96,9 @@ namespace BackEndOTP.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("email", "cpf")
+                        .IsUnique();
 
                     b.ToTable("usuarios");
                 });

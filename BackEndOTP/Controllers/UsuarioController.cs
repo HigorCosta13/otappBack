@@ -2,11 +2,9 @@
 using BackEndOTP.entity;
 using BackEndOTP.Interface;
 using BackEndOTP.model;
-using BackEndOTP.service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -27,10 +25,21 @@ namespace BackEndOTP.Controllers
         [HttpPost]
         [Route("Cadastro")]
         [AllowAnonymous]
-        public ActionResult<UsuarioModel> cadastro([FromBody] UsuarioModel usuarioModel)
+        public async Task<ActionResult<dynamic>> cadastro([FromBody] UsuarioModel usuarioModel)
         {
-            _usuario.create(usuarioModel);
-            return Ok();
+            var CPF = _usuario.validareCPF(usuarioModel);
+            var email = _usuario.validaremail(usuarioModel);
+            if (email == true)
+            {
+                if (CPF == true)
+                {
+                    _usuario.create(usuarioModel);
+                    usuarioModel.senha = "";
+                    return new { usuarioModel };
+                };
+                return BadRequest(new { message = "CPF inválidos" });
+            }
+            return BadRequest(new { message = "Email Invalido" });
         }
         [HttpPut]
         [Route("Update")]
@@ -62,12 +71,17 @@ namespace BackEndOTP.Controllers
         {
 
             var user = _usuario.login(loginModal);
-            return new
+            if (user != null)
             {
-                user
-            };
+                return new
+                {
+                    user
+                };
+            }
+            return NotFound(new { message = "Usuário ou senha inválidos" });
         }
-     
+        
+
 
     }
 }

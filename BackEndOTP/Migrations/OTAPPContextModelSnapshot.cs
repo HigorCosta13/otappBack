@@ -72,8 +72,8 @@ namespace BackEndOTP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("cpf")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("cpf")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("dateDeNascimento")
                         .HasColumnType("TEXT");
@@ -94,6 +94,9 @@ namespace BackEndOTP.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("email", "cpf")
+                        .IsUnique();
 
                     b.ToTable("usuarios");
                 });

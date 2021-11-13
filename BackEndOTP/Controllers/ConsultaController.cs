@@ -39,7 +39,7 @@ namespace BackEndOTP.Controllers
         }
         [HttpPut]
         [Route("Update")]
-        public ActionResult<ConsultaModel> update([FromBody] ConsultaModel consulta)
+        public ActionResult<ConsultaModel> update([FromBody] ConsultaCadastroModal consulta)
         {
             string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             _consulta.update(Convert.ToInt32(header), consulta);
@@ -54,7 +54,7 @@ namespace BackEndOTP.Controllers
         }
         [HttpGet]
         [Route("getid")]
-        public Consulta getid(int id)
+        public ConsultaModel getid(int id)
         {
             return _consulta.getid(id);
         }
