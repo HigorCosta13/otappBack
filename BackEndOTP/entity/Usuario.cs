@@ -13,6 +13,8 @@ namespace BackEndOTP.entity
         public string nome { get; set; }
         public string sobrenome { get; set; }
         public string cpf { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:DD/MM/YYYY}")]
         public DateTime dateDeNascimento { get; set; }
         public string email { get; set; }
         public string senha { get; set; }

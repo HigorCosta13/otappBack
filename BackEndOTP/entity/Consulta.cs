@@ -16,7 +16,11 @@ namespace BackEndOTP.entity
         public int hospitalID { get; set; }
         public string hopsital { get; set; }
         public string especialidade { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:DD/MM/YYYY}")]
         public DateTime data { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         public DateTime hora { get; set; }
         [ForeignKey("hopsitalname")]
         public virtual Hospital hospitalid { get; set; }

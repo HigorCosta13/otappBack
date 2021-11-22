@@ -18,7 +18,7 @@ namespace BackEndOTP.model
         [Required(ErrorMessage = "campo obrigatorio")]
         public string cpf { get; set; }
 
-
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "campo obrigatorio")]
         public DateTime dateDeNascimento { get; set; }
 
