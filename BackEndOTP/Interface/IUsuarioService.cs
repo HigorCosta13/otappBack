@@ -14,6 +14,7 @@ namespace BackEndOTP.Interface
        AutenticacaoModel login(LoginModal loginModal);
        bool validaremail(UsuarioModel usuarioModel);
        bool validareCPF(UsuarioModel usuarioModel);
+       
 
     }
 

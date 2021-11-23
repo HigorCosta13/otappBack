@@ -34,6 +34,7 @@ namespace BackEndOTP.Controllers
         {
 
             string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            
             _consulta.create(consulta, header);
             return Ok();
         }
@@ -64,6 +65,42 @@ namespace BackEndOTP.Controllers
         {
             string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _consulta.GetConsulta(Convert.ToInt32(header));
+        }
+        [HttpGet]
+        [Route("getvacinacaoList")]
+        public IEnumerable<Vacinacao> GetVacinacaosList()
+        {
+            string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _consulta.listVacinacao(Convert.ToInt32(header));
+        }
+        [HttpPost]
+        [Route("Cadastrovacinacao")]
+        public ActionResult<VacinacaoModel> cadastroVacinacao([FromBody] VacinacaoModel vacinacao)
+        {
+            string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _consulta.CreateVacinacao(Convert.ToInt32(header),vacinacao);
+            return Ok();
+        }
+        [HttpPut]
+        [Route("Updatevacinacao")]
+        public ActionResult<VacinacaoModel> updateVacinacao(int id,[FromBody] VacinacaoModel vacinacao)
+        {
+            _consulta.UpdateVacinacao(id, vacinacao);
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("Getvacinacaoid")]
+        public Vacinacao getIdVacinacao(int Id)
+        {
+             return _consulta.getIdVacinacao(Id);
+        }
+        [HttpDelete]
+        [Route("DeleteVacinacao")]
+        public ActionResult<VacinacaoModel> deleteVacinacao(int id)
+        {
+            _consulta.deleteVacinacao(id);
+            return Ok();
         }
 
     }

@@ -16,6 +16,7 @@ namespace BackEndOTP.Data
          public DbSet<Usuario> usuarios { get; set; }
          public DbSet<Consulta> consultas { get; set; } 
          public DbSet<Hospital> hospitals { get; set; }
+         public DbSet<Vacinacao> vacinacaos {get; set;}
 
     }
    

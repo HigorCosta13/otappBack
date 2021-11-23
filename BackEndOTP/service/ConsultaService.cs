@@ -80,11 +80,65 @@ namespace BackEndOTP.service
         {
             var consulta = _oTAPPContext.consultas.FirstOrDefault(u => u.id == id);
             consulta.usuarioID = id;
+            consulta.especialidade = consultaModel.especialidade;
             consulta.hospitalID = consultaModel.hospitalID;
             consulta.data = consultaModel.data;
+            consulta.especialidade = consultaModel.especialidade;
             _oTAPPContext.consultas.Update(consulta);
             _oTAPPContext.SaveChanges();
 
+        }
+         public void CreateVacinacao(int id,VacinacaoModel vacinacaoModel)
+         {
+            Vacinacao vacinacao = new Vacinacao
+            {
+                dose = vacinacaoModel.dose,
+                atual = vacinacaoModel.atual,
+                nameVacina = vacinacaoModel.nameVacina,
+                date = vacinacaoModel.date,
+                dateProx = vacinacaoModel.dateProx,
+                idUsuario = id
+            };
+            _oTAPPContext.vacinacaos.Add(vacinacao);
+            _oTAPPContext.SaveChanges();
+         }
+          public void UpdateVacinacao(int id,VacinacaoModel vacinacaoModel)
+         {
+            Vacinacao vacinacao =_oTAPPContext.vacinacaos.FirstOrDefault(v => v.id == id);
+            vacinacao.id = id;
+            vacinacao.nameVacina = vacinacaoModel.nameVacina;
+            vacinacao.dose = vacinacaoModel.dose;
+            vacinacao.dateProx = vacinacaoModel.dateProx;
+            vacinacao.date = vacinacaoModel.date;
+            vacinacao.atual = vacinacaoModel.atual;
+
+            _oTAPPContext.vacinacaos.Update(vacinacao);
+            _oTAPPContext.SaveChanges();
+         }
+             public void deleteVacinacao(int id)
+        {
+            _oTAPPContext.Remove
+              (_oTAPPContext.vacinacaos.Single(v => v.id == id));
+            _oTAPPContext.SaveChanges();
+        }
+         public Vacinacao getIdVacinacao(int Id)
+        {
+            Vacinacao vacinacao = _oTAPPContext.vacinacaos.FirstOrDefault(v => v.id == Id);
+            return vacinacao;
+        }
+        public IEnumerable<Vacinacao> listVacinacao(int Id)
+        {
+             return (from list in _oTAPPContext.vacinacaos
+                    where list.idUsuario.Equals(Id)
+                    select new Vacinacao {
+                        id = list.id,
+                        idUsuario= list.idUsuario,
+                        atual = list.atual,
+                        date = list.date,
+                        dateProx = list.dateProx,
+                        dose = list.dose,
+                        nameVacina = list.nameVacina
+                    }).ToList();
         }
         
     }

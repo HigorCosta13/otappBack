@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vcd7/nL5UTmIL3iWXU4OUDJ6KOGVELRP5bpSAOX7Ll4cDu7xKoWANw7VuYtAqf4HcaOzpGuuOr9p29rnWzWydg==",
+  "dgSpecHash": "VtNCHSwbDmUx90A6fyJ9fyIvGyYUDqg405aQ7+ry3jNyvRJ+WZO4f70zinAsh8svj72aKYorCbEv5CobE08OGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\BackEndOTP\\BackEndOTP\\BackEndOTP.csproj",
+  "projectFilePath": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\otappBack\\BackEndOTP\\BackEndOTP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jhona\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\jhona\\.nuget\\packages\\automapper.extensions.expressionmapping\\4.1.3\\automapper.extensions.expressionmapping.4.1.3.nupkg.sha512",

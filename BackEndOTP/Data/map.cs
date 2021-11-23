@@ -16,6 +16,7 @@ namespace BackEndOTP.Data
             CreateMap<UsuarioModel, Usuario>();
             CreateMap<Consulta, ConsultaModel>();
             CreateMap<ConsultaModel,Consulta>();
+            CreateMap<Vacinacao,VacinacaoModel>().ReverseMap();
         }
     }
 }

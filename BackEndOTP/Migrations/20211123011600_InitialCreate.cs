@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackEndOTP.Migrations
 {
-    public partial class OTAPP : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,6 +37,24 @@ namespace BackEndOTP.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_usuarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "vacinacaos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    idUsuario = table.Column<int>(type: "INTEGER", nullable: false),
+                    nameVacina = table.Column<string>(type: "TEXT", nullable: true),
+                    dose = table.Column<int>(type: "INTEGER", nullable: false),
+                    atual = table.Column<int>(type: "INTEGER", nullable: false),
+                    date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    dateProx = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_vacinacaos", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -91,6 +109,9 @@ namespace BackEndOTP.Migrations
         {
             migrationBuilder.DropTable(
                 name: "consultas");
+
+            migrationBuilder.DropTable(
+                name: "vacinacaos");
 
             migrationBuilder.DropTable(
                 name: "hospitals");

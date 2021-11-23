@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndOTP.Migrations
 {
     [DbContext(typeof(OTAPPContext))]
-    [Migration("20211113023240_OTAPP")]
-    partial class OTAPP
+    [Migration("20211123011600_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,6 +101,35 @@ namespace BackEndOTP.Migrations
                         .IsUnique();
 
                     b.ToTable("usuarios");
+                });
+
+            modelBuilder.Entity("BackEndOTP.entity.Vacinacao", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("atual")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("dateProx")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("dose")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("idUsuario")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("nameVacina")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("vacinacaos");
                 });
 
             modelBuilder.Entity("BackEndOTP.entity.Consulta", b =>

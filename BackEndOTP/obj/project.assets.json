@@ -7630,28 +7630,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jhona\\.nuget\\packages\\": {},
-    "D:\\sdk\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\jhona\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\BackEndOTP\\BackEndOTP\\BackEndOTP.csproj",
+      "projectUniqueName": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\otappBack\\BackEndOTP\\BackEndOTP.csproj",
       "projectName": "BackEndOTP",
-      "projectPath": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\BackEndOTP\\BackEndOTP\\BackEndOTP.csproj",
+      "projectPath": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\otappBack\\BackEndOTP\\BackEndOTP.csproj",
       "packagesPath": "C:\\Users\\jhona\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\BackEndOTP\\BackEndOTP\\obj\\",
+      "outputPath": "C:\\Users\\jhona\\OneDrive\\Documentos\\higor\\Back\\otappBack\\BackEndOTP\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\sdk\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\jhona\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

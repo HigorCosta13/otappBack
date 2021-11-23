@@ -13,5 +13,12 @@ namespace BackEndOTP.Interface
         void delete(int id);
         ConsultaModel getid(int Id);
         IEnumerable<ConsultaModel> GetConsulta(int Id);
+        void CreateVacinacao(int id,VacinacaoModel vacinacaoModel);
+        void UpdateVacinacao(int id,VacinacaoModel vacinacaoModel);
+        IEnumerable<Vacinacao> listVacinacao(int Id);
+        Vacinacao getIdVacinacao(int Id);
+        void deleteVacinacao(int id);
+       
+        
     }
 }
