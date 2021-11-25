@@ -7,7 +7,6 @@ namespace BackEndOTP.model
 {
     public class AutenticacaoModel
     {
-        public string email { get; set; }
         public string token { get; set; }
     }
 }
