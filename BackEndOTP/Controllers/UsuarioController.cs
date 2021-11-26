@@ -73,10 +73,8 @@ namespace BackEndOTP.Controllers
             var user = _usuario.login(loginModal);
             if (user != null)
             {
-                return new
-                {
-                    user
-                };
+                return user;
+               
             }
             return NotFound(new { message = "Usuário ou senha inválidos" });
         }

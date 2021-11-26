@@ -86,7 +86,6 @@ namespace BackEndOTP.service
             consulta.especialidade = consultaModel.especialidade;
             _oTAPPContext.consultas.Update(consulta);
             _oTAPPContext.SaveChanges();
-
         }
          public void CreateVacinacao(int id,VacinacaoModel vacinacaoModel)
          {

@@ -164,7 +164,7 @@ namespace BackEndOTP.service
         }
     
 
-            public AutenticacaoModel login(LoginModal loginModal)
+            public String login(LoginModal loginModal)
                 {
                     var usuario = _oTAPPContext.usuarios.FirstOrDefault(u => u.email == loginModal.email);
                     if (usuario != null)
@@ -172,12 +172,8 @@ namespace BackEndOTP.service
                         var result = VerifyHashedPassword(usuario.senha, loginModal.senha);
                         if (result != false)
                         {
-                            var token = GenerateToken(usuario);
-                            AutenticacaoModel autenticacaoModel = new AutenticacaoModel();
-                            autenticacaoModel.token = token;
-                            autenticacaoModel.email = loginModal.email;
-
-                            return autenticacaoModel;
+                            var token = GenerateToken(usuario);                             
+                            return token;
 
                         }
                         return null;
