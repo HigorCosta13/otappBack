@@ -24,13 +24,11 @@ namespace BackEndOTP.service
 
         public void create(ConsultaCadastroModal consulta, string header)
         {
-            var hospital = _oTAPPContext.hospitals.FirstOrDefault(h => h.id == consulta.hospitalID); 
             Consulta cosul = new Consulta();
             cosul.data = consulta.data;
-            cosul.especialidade = consulta.especialidade;
-            cosul.hopsital = hospital.hospital;
-            cosul.hora = consulta.hora;
-            cosul.hospitalID = consulta.hospitalID;
+            cosul.exame = consulta.exame;
+            cosul.hopsital = consulta.hospital;
+            cosul.avatar = consulta.avatar;
             cosul.usuarioID = Convert.ToInt32(header);
             _oTAPPContext.consultas.Add(cosul);
             _oTAPPContext.SaveChanges();
@@ -49,12 +47,10 @@ namespace BackEndOTP.service
                     where list.usuarioID.Equals(Id)
                     select new ConsultaModel {
                         id = list.id,
-                        UsuarioID = list.usuarioID,
-                        hospitalID = list.hospitalID,
                         data = list.data,
-                        especialidade = list.especialidade,
+                        exame = list.exame,
                         hopsital = list.hopsital,
-                        hora = list.hora
+                        avatar = list.avatar
                     }).ToList();
         }
 
@@ -62,11 +58,8 @@ namespace BackEndOTP.service
         {
             Consulta consulta = _oTAPPContext.consultas.FirstOrDefault(u => u.id == Id);
             ConsultaModel consultaModel = new ConsultaModel();
-            consultaModel.UsuarioID = consulta.usuarioID;
-            consultaModel.hospitalID = consulta.hospitalID;
             consultaModel.hopsital = consulta.hopsital;
-            consultaModel.hora = consulta.hora;
-            consultaModel.especialidade = consulta.especialidade;
+            consultaModel.exame = consulta.exame;
             return consultaModel;
         }
 
@@ -80,10 +73,9 @@ namespace BackEndOTP.service
         {
             var consulta = _oTAPPContext.consultas.FirstOrDefault(u => u.id == id);
             consulta.usuarioID = id;
-            consulta.especialidade = consultaModel.especialidade;
-            consulta.hospitalID = consultaModel.hospitalID;
+            consulta.exame = consultaModel.exame;
             consulta.data = consultaModel.data;
-            consulta.especialidade = consultaModel.especialidade;
+            consulta.avatar = consultaModel.avatar;
             _oTAPPContext.consultas.Update(consulta);
             _oTAPPContext.SaveChanges();
         }

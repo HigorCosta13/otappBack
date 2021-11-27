@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndOTP.Migrations
 {
     [DbContext(typeof(OTAPPContext))]
-    [Migration("20211123011600_InitialCreate")]
+    [Migration("20211126221701_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,48 +24,24 @@ namespace BackEndOTP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("avatar")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("data")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("especialidade")
+                    b.Property<string>("exame")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("hopsital")
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("hopsitalname")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("hora")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("hospitalID")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("usuarioID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("id");
 
-                    b.HasIndex("hopsitalname");
-
-                    b.HasIndex("usuarioID");
-
                     b.ToTable("consultas");
-                });
-
-            modelBuilder.Entity("BackEndOTP.entity.Hospital", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("hospital")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("id");
-
-                    b.ToTable("hospitals");
                 });
 
             modelBuilder.Entity("BackEndOTP.entity.Usuario", b =>
@@ -130,23 +106,6 @@ namespace BackEndOTP.Migrations
                     b.HasKey("id");
 
                     b.ToTable("vacinacaos");
-                });
-
-            modelBuilder.Entity("BackEndOTP.entity.Consulta", b =>
-                {
-                    b.HasOne("BackEndOTP.entity.Hospital", "hospitalid")
-                        .WithMany()
-                        .HasForeignKey("hopsitalname");
-
-                    b.HasOne("BackEndOTP.entity.Usuario", "Usuarioid")
-                        .WithMany()
-                        .HasForeignKey("usuarioID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("hospitalid");
-
-                    b.Navigation("Usuarioid");
                 });
 #pragma warning restore 612, 618
         }
