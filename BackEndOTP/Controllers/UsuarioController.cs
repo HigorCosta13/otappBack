@@ -23,7 +23,6 @@ namespace BackEndOTP.Controllers
             _oTAPPContext = oTAPPContext;
         }
         [HttpPost]
-        [Route("Cadastro")]
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> cadastro([FromBody] UsuarioModel usuarioModel)
         {
@@ -42,7 +41,6 @@ namespace BackEndOTP.Controllers
             return BadRequest(new { message = "Email Invalido" });
         }
         [HttpPut]
-        [Route("Update")]
        public ActionResult<UsuarioModel> update([FromBody] UsuarioModel usuario)
         {
             string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -50,7 +48,6 @@ namespace BackEndOTP.Controllers
             return Ok();
         }
         [HttpDelete]
-        [Route("Delete")]
         public ActionResult<UsuarioModel> delete()
         {
             string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -58,7 +55,7 @@ namespace BackEndOTP.Controllers
             return Ok();
         }
         [HttpGet]
-        [Route("getid")]
+        [Route("/{id}")]
         public Usuario getid()
         {
             string header = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
